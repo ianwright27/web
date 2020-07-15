@@ -28,13 +28,12 @@
 					<th> Date of Joining </th>
 				</tr> <br>
 			 <?php
-			   $connection = mysqli_connect("localhost","root","");
-			   $db = mysqli_select_db($connection,'brt');
+			   $connection = mysqli_connect("localhost","root","","brt");
 			   
 			   if(isset($_POST['search']))
 			   {
 				   $surname = $_POST['surname'];
-				   $query = "SELECT * FROM driver WHERE Surname LIKE surname";
+				   $query = "SELECT * FROM driver WHERE surname LIKE '$surname'";
 				   $result = mysqli_query($connection, $query) or die("Error: " . mysqli_error($connection));
 				   
 				   while($row = mysqli_fetch_array($result))
